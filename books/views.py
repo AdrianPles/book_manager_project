@@ -46,5 +46,3 @@ def delete_book(request: HttpRequest, pk: int):
         return render(request, template_name="books/book_confirm_delete.html", context={"book": book})
 
 
-    # book.delete()
-    # return redirect("home")
