@@ -19,8 +19,18 @@ def list_books(request: HttpRequest):
     # trebuie sa listam cartile din baza de date
     # accesare de carti:
     # QuuerySet (all-ul)
-    books = Book.objects.all()
-    return render(request, template_name="books/home.html", context={"books": books})
+
+    # request.GET este un dictionar care contine toate url params.
+    # "sort" este parametrul din url care ne indica ce sortare facem.
+    sort = request.GET.get("sort")
+    books = Book.objects.all().order_by("pk")   # sortare dupa pk --> din sort stergem valoarea default "asc"
+    # srt_b = sorted(list(books), key=lambda x: x.title.lower())
+
+    if sort == "asc":
+        books = Book.objects.all().order_by("title")
+    else:
+        books = Book.objects.all().order_by("-title")  # '-' inversare "title"
+    return render(request, template_name="books/home.html", context={"books": books}) # book se inlocuieste srt_b
 
 def create_book(request: HttpRequest):
     if request.method == "POST":
