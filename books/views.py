@@ -22,7 +22,7 @@ def list_books(request: HttpRequest):
 
     # request.GET este un dictionar care contine toate url params.
     # "sort" este parametrul din url care ne indica ce sortare facem.
-    sort = request.GET.get("sort")
+    sort = request.GET.get("sort", "asc")
     books = Book.objects.all().order_by("pk")   # sortare dupa pk --> din sort stergem valoarea default "asc"
     # srt_b = sorted(list(books), key=lambda x: x.title.lower())
 
