@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
@@ -23,7 +23,18 @@ def login_user(request: HttpRequest):
     return render(request, 'accounts/login.html', {"form": form})
 
 def register_user(request: HttpRequest):
-    pass
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            # now we register user in db, using .save() method.
+            user = form.save()
+            login(request, user)
+            return redirect("home")
+    else:
+        form = RegisterForm()
+
+    return render(request, 'accounts/register.html', {"form": form})
 
 def logout_user(request: HttpRequest):
-    pass
+    logout(request)
+    return redirect('home')
