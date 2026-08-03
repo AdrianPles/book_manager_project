@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paired names</title>
+</head>
+<body>
+<h2>Numele sortate alfabetic. Numar random la fiecare request.</h2>
+{% for person in scrambled %}
+    <p>{{ person.name }} - {{ person.count }}</p>
+{% endfor %}
+</body>
+</html>
