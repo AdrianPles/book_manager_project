@@ -27,3 +27,7 @@ nav {
     display: flex;
     justify-content: space-between;
 }
+
+.cover-image {
+    max-width: 350px !important;
+}
