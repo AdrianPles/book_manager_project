@@ -1,5 +1,3 @@
-from urllib import response
-
 import pytest
 from django.contrib.auth import get_user_model
 from django.test.client import Client
