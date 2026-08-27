@@ -44,7 +44,7 @@ Home
         <div class="bottom-info">
           <a href="{% url 'list_user_books' b.user.pk %}" >{{ b.user.username }}</a>
           <div>
-            {% if user.is_authenticated and user.pk == b.user.pk  %}
+            {% if user.is_authenticated and user.pk == b.user.pk %}
             <a href="{% url 'update_book' b.pk %}" >✏️️</a>
             <a href="{% url 'delete_book' b.pk %}" >🗑️</a>
             {% endif %}

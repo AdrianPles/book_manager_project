@@ -21,13 +21,11 @@
         {% endfor %}
     </div>
     {% if user.is_authenticated %}
-
-    <form method="post" action="{% url 'add_comment' book.pk%}">
-        {% csrf_token %}
-        <textarea name="text" rows="3" placeholder="Leave a comment.."></textarea>
-        <button type="submit">Comment</button>
-    </form>
-
+        <form method="post" action="{% url 'add_comment' book.pk %}">
+            {% csrf_token %}
+            <textarea name="text" rows="3" placeholder="Leave a comment.."></textarea>
+            <button type="submit">Comment</button>
+        </form>
     {% else %}
         <a href="{% url 'login' %}">Log in to comment</a>
     {% endif %}
